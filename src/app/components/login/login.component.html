@@ -1,0 +1,18 @@
+<section class="background">
+  <div class="login-block">
+    <h1 class="text-style">BIBLIOTECA</h1>
+    <div>
+      <mdb-form-control>
+      <label class="text-style"  for="name"  >Usuário</label>
+      <input mdbInput class="input-style" type="user" id="nomeAF" [(ngModel)]="nomeAF" name="nomeAF" placeholder="Insira seu Usuário" >
+    </mdb-form-control>
+    </div>
+    <div>
+      <label class="text-style"  for="senhaAF">Senha</label>
+      <input mdbInput class="input-style" id="senhaAF" [(ngModel)]="senhaAF" type="password" name="senhaAF" placeholder="Insira sua senha">
+    </div>
+    <div>
+      <button class="button-style" (click)="logar()">Acessar</button>
+    </div>
+  </div>
+</section>

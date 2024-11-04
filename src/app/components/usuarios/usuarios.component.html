@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="background background central-content">
+    <div class="back-cover">
+        <section>
+            <div>
+                <button class="button-cad-livro" [routerLink]="['/biblioteca/usuarios/cadastro']">Cadastrar</button>
+            </div>
+        </section>
+        <section>
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Tipo de Usuário</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-style-list" *ngFor="let usuario of usuarios; trackBy: trackById">
+                        <td>{{ usuario.idUsuario }}</td>
+                        <td>{{ usuario.nomeUsuario }}</td>
+                        <td>{{ usuario.cpf }}</td>
+                        <td>{{ usuario.tipoUsuario }}</td>
+
+                        <td>
+                            <button class="dropdown-toggle" (click)="toggleDropdown(usuario.idUsuario)"></button>
+
+                            <div class="dropdown-menu" *ngIf="dropdownOpenId === usuario.idUsuario">
+                                <button class="dropdown-item"
+                                    [routerLink]="['/biblioteca/usuarios/editar', usuario.idUsuario]">Editar</button>
+                                <button class="dropdown-item"
+                                    (click)="excluirUsuario(usuario.idUsuario)">Excluir</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+.form-section {
+    flex: 2;
+    padding: 20px;
+}
+
+.genres-section {
+    flex: 1;
+    padding: 20px;
+    color: bisque;
+}
+
+.form-header {
+    margin-bottom: 20px;
+    color: bisque;
+}
+
+.book-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: bisque;
+}
+
+.form-check-input {
+    margin-right: 5px;
+}
+
+.genres-list {
+    display: flex;
+    flex-direction: column;
+    color: bisque;
+    margin-top: 20px;
+}
+
+.button-cad-livro {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 40px;
+    width: 100%;
+    background-color: #9A7E6F;
+    color: bisque;
+}

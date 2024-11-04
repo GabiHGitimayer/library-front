@@ -1,0 +1,57 @@
+.nav-style {
+    background-color:rgb(97, 51, 31)
+  }
+  
+  .nav-buttons {
+    color: bisque;
+    margin: 1rem;
+    text-decoration: none;
+  
+    &:hover {
+      color: #ffe8d6;
+    }
+  }
+  
+  .navbar {
+    .container-fluid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    .toggle-btn {
+      background: none;
+      border: none;
+      color: bisque;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  
+    .navbar-collapse {
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+  
+      &.collapsed {
+        max-height: 0;
+        display: none;
+      }
+  
+      &.expanded {
+        max-height: 500px;
+        display: block;
+      }
+    }
+  
+    .navbar-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+  
+      .nav-item {
+        margin: 0.5rem 0;
+      }
+    }
+  }
+  

@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<div class="background">
+  <div class="back-cover">
+    <section class="seq-form">
+      <div class="form-group">
+        <h1 class="form-header">Cadastro de usuários</h1>
+      </div>
+      <form>
+        <div class="form-group">
+          <label mdbLabel class="form-label" for="nome">Nome do usuário</label>
+          <input mdbInput type="text" class="form-control" id="nomeUsuario" [(ngModel)]="nomeUsuario"
+            name="nomeUsuario" />
+        </div>
+
+        <div class="form-group">
+          <label mdbLabel class="form-label" for="cpf">CPF do usuário</label>
+          <input mdbInput type="text" class="form-control" id="cpf" [(ngModel)]="cpf" name="cpf" />
+        </div>
+
+        <div class="form-group">
+          <label mdbLabel class="form-label" for="senha">Senha do usuário</label>
+          <input mdbInput type="password" class="form-control" id="senha" [(ngModel)]="senha" name="senha" />
+        </div>
+
+        <section class="select-list">
+        <div class="form-check">
+          <h5>Tipo de usuário</h5>
+          <div>
+            <input class="form-check-input" type="radio" name="tipoUsuario" [(ngModel)]="tipoUsuario" value="USUARIO"
+              id="usuario" (change)="onTipoUsuarioChange()" checked />
+            <label class="form-check-label" for="usuario"> Usuário </label>
+          </div>
+          <div>
+            <input class="form-check-input" type="radio" name="tipoUsuario" [(ngModel)]="tipoUsuario" value="ADM"
+              id="admin" (change)="onTipoUsuarioChange()" />
+            <label class="form-check-label" for="ADM"> Administrador </label>
+          </div>
+          <div>
+            <input class="form-check-input" type="radio" name="tipoUsuario" [(ngModel)]="tipoUsuario"
+              value="FUNCIONARIO" id="funcionario" (change)="onTipoUsuarioChange()" />
+            <label class="form-check-label" for="funcionario"> Funcionário </label>
+          </div>
+        </div>
+        <span *ngIf="usuarioCadastrado" class="badge rounded-pill badge-success">Usuário cadastrado!</span>
+      </section>
+        <button mdbRipple type="button" class="btn btn-primary btn-block" (click)="cadastrar()">Cadastrar</button>
+        <button mdbRipple type="button" class="btn btn-secondary btn-block"
+          [routerLink]="['/biblioteca/usuarios']">Cancelar</button>
+      </form>
+      
+    </section>
+  </div>
+</div>

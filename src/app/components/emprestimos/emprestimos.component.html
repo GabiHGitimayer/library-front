@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+
+<div class="background background central-content">
+    <div class="back-cover">
+
+        <section>
+            <div>
+                <button class="button-cad-livro" [routerLink]="['/biblioteca/emprestimos/cadastro']">Cadastrar</button>
+            </div>
+        </section>
+        <section>
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Usuário</th>
+                        <th>Livro</th>
+                        <th>Data do empréstimo</th>
+                        <th>Data de Devolução</th>
+                        <th>Status do empréstimo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (emprestimo of emprestimos; track $index) {
+                    <tr text-style-list>
+                        <td>{{ emprestimo.idEmprestimo }}</td>
+                        <td>{{ emprestimo.usuario }}</td>
+                        <td>{{ emprestimo.livro }}</td>
+                        <td>{{ emprestimo.dataEmprestimo }}</td>
+                        <td>{{ emprestimo.dataDevolucao }}</td>
+                        <td>{{ emprestimo.statusEmprestimo }}</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>

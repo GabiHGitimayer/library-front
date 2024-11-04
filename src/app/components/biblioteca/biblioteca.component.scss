@@ -1,0 +1,14 @@
+.home-button{
+    width: 180px;
+    height: 250px;
+    background-image: url(../../../../src/assets/images/button.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px;
+    color: bisque;
+    cursor: pointer;
+    border: none;
+}

@@ -1,0 +1,105 @@
+<app-navbar></app-navbar>
+<div class="background">
+    <div class="back-cover">
+
+        <section class="form-section">
+            <div class="form-header">
+                <h1>Cadastro de livros</h1>
+            </div>
+            <form class="seq-form">
+
+                <div class="form-group">
+                    <label for="titulo" class="form-label">Título</label>
+                    <input mdbInput type="text" id="titulo" class="form-control" name="titulo" [(ngModel)]="titulo" required />
+                </div>
+                <div class="form-group">
+                    <label for="autor" class="form-label">Autor</label>
+                    <input mdbInput type="text" id="autor" class="form-control" name="autor" [(ngModel)]="autor" required />
+                </div>
+                <div class="form-group">
+                    <label for="isbn" class="form-label">ISBN</label>
+                    <input mdbInput type="text" id="isbn" class="form-control" name="isbn" [(ngModel)]="isbn" required />
+                </div>
+                <div class="form-group">
+                    <label for="anoPublicacao" class="form-label">Ano de publicação</label>
+                    <input mdbInput type="number" id="anoPublicacao" class="form-control" name="anoPublicacao" [(ngModel)]="anoPublicacao" required />
+                </div>
+                <div class="form-group">
+                    <label for="quantExemplares" class="form-label">Quantidade</label>
+                    <input mdbInput type="number" id="quantExemplares" class="form-control" name="quantExemplares" [(ngModel)]="quantExemplares" required />
+                </div>
+
+            </form>
+        </section>
+
+        <section class="genres-section">
+            <h5>Gêneros</h5>
+            <div class="genres-list">
+
+                <div>
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genero" value="Aventura" />
+                    <label mdbLabel class="form-check-label">Aventura</label>
+                </div>
+                <div>
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genero" value="Ficção Científica" />
+                    <label mdbLabel class="form-check-label">Ficção Científica</label>
+                </div>
+                <div>
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genero" value="Fantasia" />
+                    <label mdbLabel class="form-check-label">Fantasia</label>
+                </div>
+                <div>
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genero" value="Terror" />
+                    <label mdbLabel class="form-check-label">Terror</label>
+                </div>
+                <div>
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genero" value="Suspense" />
+                    <label mdbLabel class="form-check-label">Suspense</label>
+                </div>
+
+                <div>
+                    <input mdbInput type="radio" class="form-check-input" name="genero" value="Romance" />
+                    <label mdbLabel class="form-check-label">Romance</label>
+                </div>
+
+                <div>
+                    <input mdbInput type="radio" class="form-check-input" name="genero" value="Infantil" />
+                    <label mdbLabel class="form-check-label">Infantil</label>
+                </div>
+
+                <div>
+                    <input mdbInput type="radio" class="form-check-input" name="genero" value="Biografia" />
+                    <label mdbLabel class="form-check-label">Biografia</label>
+                </div>
+
+                <div>
+                    <input mdbInput type="radio" class="form-check-input" name="genero" value="Poesia" />
+                    <label mdbLabel class="form-check-label">Poesia</label>
+                </div>
+
+                <div>
+                    <input mdbInput type="radio" class="form-check-input" name="genero" value="Autoajuda" />
+                    <label mdbLabel class="form-check-label">Autoajuda</label>
+                </div>
+
+                <div>
+                    <input mdbInput type="radio" class="form-check-input" name="genero" value="Quadrinhos" />
+                    <label mdbLabel class="form-check-label">Quadrinhos</label>
+                </div>
+
+                <div>
+                    <input mdbInput type="radio" class="form-check-input" name="genero" value="História" />
+                    <label mdbLabel class="form-check-label">História</label>
+                </div>
+
+            </div>
+
+            <div>
+                <span *ngIf="livroCadastrado" class="badge rounded-pill badge-success">Livro cadastrado!</span>
+                <button mdbRipple type="button" class="button-cad-livro" (click)="cadastrar()">Cadastrar</button>
+                <button mdbRipple type="button" class="button-cad-livro" [routerLink]="['/biblioteca/livros']">Cancelar</button>
+            </div>
+        </section>
+        
+    </div>
+</div>

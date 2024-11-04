@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<div class="background central-content">
+    <div class="back-cover">
+        <section>
+            <div>
+                <button class="button-cad-livro" [routerLink]="['/biblioteca/livros/cadastro']">Cadastrar</button>
+            </div>
+        </section>
+        <section>
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Gênero</th>
+                        <th>ISBN</th>
+                        <th>Ano</th>
+                        <th>Exemplares</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-style-list" *ngFor="let livro of livros; trackBy: trackById">
+                        <td>{{ livro.idLivro }}</td>
+                        <td>{{ livro.titulo }}</td>
+                        <td>{{ livro.autor }}</td>
+                        <td>{{ livro.genero }}</td>
+                        <td>{{ livro.isbn }}</td>
+                        <td>{{ livro.anoPublicacao }}</td>
+                        <td>{{ livro.quantExemplares }}</td>
+                        <td>
+                            <button class="dropdown-toggle" (click)="toggleDropdown(livro.idLivro)"></button>
+                            
+                            <div class="dropdown-menu" *ngIf="dropdownOpenId === livro.idLivro">
+                                <button class="dropdown-item" [routerLink]="['/biblioteca/livros/editar', livro.idLivro]">Editar</button>
+                                <button class="dropdown-item" (click)="excluirLivro(livro.idLivro)">Excluir</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>
