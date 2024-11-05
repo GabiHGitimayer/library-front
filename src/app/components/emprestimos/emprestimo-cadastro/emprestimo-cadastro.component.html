@@ -1,31 +1,39 @@
 <app-navbar></app-navbar>
-<section>
-    <div>
-        <h1>Cadastro de livros</h1>
+<div class="background central-content">
+    <div class="back-cover">
+<section class="form-section">
+    <div class="form-header">
+        <h1>Empréstimo</h1>
     </div>
-    <form>
-        <mdb-form-control class="mb-4">
+    <form class="seq-form">
+        <div class="form-group">
+            <label mdbLabel class="form-label" for="idUsuario">Id do Usuário</label>
           <input mdbInput type="number" id="idUsuario" class="form-control" [(ngModel)]="idUsuario" name="idUsuario" />
-          <label mdbLabel class="form-label" for="idUsuario">Id do Usuário</label>
-        </mdb-form-control>
+          
+        </div>
 
-        <mdb-form-control class="mb-4">
-            <input mdbInput type="number" id="idLivro" class="form-control" [(ngModel)]="idLivro" name="idLivro" />
+        <div class="form-group">
             <label mdbLabel class="form-label" for="idLivro">Id do Livro</label>
-        </mdb-form-control>
+            <input mdbInput type="number" id="idLivro" class="form-control" [(ngModel)]="idLivro" name="idLivro" />
+            
+        </div>
         
-        <mdb-form-control class="mb-4">
-            <input mdbInput type="date" id="dataEmprestimo" class="form-control" [(ngModel)]="dataEmprestimo" name="dataEmprestimo" />
+        <div class="form-group">
             <label mdbLabel class="form-label" for="dataEmprestimo">Data de Empréstimo</label>
-        </mdb-form-control>
+            <input mdbInput type="date" id="dataEmprestimo" class="form-control" [(ngModel)]="dataEmprestimo" name="dataEmprestimo" />
+            
+        </div>
     
-        <mdb-form-control class="mb-4">
-            <input mdbInput type="date" id="dataDevolucao" class="form-control" [(ngModel)]="dataDevolucao" name="dataDevolucao" />
+        <div class="form-group">
             <label mdbLabel class="form-label" for="dataDevolucao">Data de Devolução</label>
-        </mdb-form-control>
+            <input mdbInput type="date" id="dataDevolucao" class="form-control" [(ngModel)]="dataDevolucaoEfetiva" name="dataDevolucao" />
+            
+        </div>
 
-        <div class="form-check">
+        <div class="genres-section">
             <h5>Status do empréstimo:</h5>
+
+            <div class="genres-list">
             <div>
                 <input class="form-check-input" type="radio" name="statusEmprestimo" [(ngModel)]="statusEmprestimo" value="emprestado" id="emprestado" (change)="onStatusChange()" />
                 <label class="form-check-label" for="emprestado"> Emprestado </label>
@@ -43,5 +51,8 @@
         <span *ngIf="emprestimoCadastrado" class="badge rounded-pill badge-success">Empréstimo cadastrado!</span>
         <button mdbRipple type="button" class="btn btn-primary btn-block" (click)="cadastrar()">Cadastrar</button>
         <button mdbRipple type="button" class="btn btn-secondary btn-block" [routerLink]="['/biblioteca/emprestimos']">Cancelar</button>
-      </form>
+    </div>  
+    </form>
 </section>
+</div>
+</div>

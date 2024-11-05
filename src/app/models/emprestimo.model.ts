@@ -3,14 +3,14 @@ import { Usuario } from "./usuario.model";
 
 export class Emprestimo {
     idEmprestimo: number;
-    usuario: Usuario[];
-    livro: Livro[];
+    usuario: Usuario;
+    livro: Livro;
     dataEmprestimo: Date;
     dataDevolucao: Date;
     dataDevolucaoEfetiva: Date;
     statusEmprestimo: string;
 
-    constructor(idEmprestimo: number, usuario: Usuario[], livro: Livro[], dataEmprestimo: Date, dataDevolucao: Date, dataDevolucaoEfetiva: Date, statusEmprestimo: string) {
+    constructor(idEmprestimo: number, usuario: Usuario, livro: Livro, dataEmprestimo: Date, dataDevolucao: Date, dataDevolucaoEfetiva: Date, statusEmprestimo: string) {
         this.idEmprestimo = idEmprestimo;
         this.usuario = usuario;
         this.livro = livro;

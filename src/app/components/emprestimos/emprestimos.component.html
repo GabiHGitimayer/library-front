@@ -18,17 +18,28 @@
                         <th>Data do empréstimo</th>
                         <th>Data de Devolução</th>
                         <th>Status do empréstimo</th>
+                        <th>Editar</th>
                     </tr>
                 </thead>
                 <tbody>
                     @for (emprestimo of emprestimos; track $index) {
                     <tr text-style-list>
                         <td>{{ emprestimo.idEmprestimo }}</td>
-                        <td>{{ emprestimo.usuario }}</td>
-                        <td>{{ emprestimo.livro }}</td>
+                        <td>{{ emprestimo.usuario.nomeUsuario}}</td>
+                        <td>{{ emprestimo.livro.titulo }}</td>
                         <td>{{ emprestimo.dataEmprestimo }}</td>
-                        <td>{{ emprestimo.dataDevolucao }}</td>
+                        <td>{{ emprestimo.dataDevolucaoEfetiva }}</td>
                         <td>{{ emprestimo.statusEmprestimo }}</td>
+                        <td>
+                            <button (click)="devolverLivro(emprestimo.id)">Devolver</button>
+
+                            <div *ngIf="multa">
+                                <p>{{ mensagemMulta }}</p>
+                            </div>
+
+
+                        </td>
+
                     </tr>
                     }
                 </tbody>

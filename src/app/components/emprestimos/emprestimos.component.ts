@@ -1,35 +1,59 @@
-import { Component, inject } from '@angular/core';
-import { NavbarComponent } from "../navbar/navbar.component";
-import { RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { EmprestimoService } from '../../service/emprestimo/emprestimo.service';
-import { Emprestimo } from '../../models/emprestimo.model';
+import { MultaService } from '../../service/multa/multa.service';
+import { NavbarComponent } from "../navbar/navbar.component";
+import { Multa } from '../../models/multa.model';
+import { Router, RouterLink } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-emprestimos',
   standalone: true,
-  imports: [NavbarComponent, RouterLink],
+  imports: [NavbarComponent, RouterLink, NgIf],
   templateUrl: './emprestimos.component.html',
-  styleUrl: './emprestimos.component.scss'
+  styleUrls: ['./emprestimos.component.scss']
 })
-export class EmprestimosComponent {
-  emprestimos: Emprestimo[] = [];
+export class EmprestimosComponent implements OnInit {
+  emprestimos: any[] = [];
+  multa: Multa | null = null;
+  mensagemMulta: string = '';
 
-  emprestimoService = inject(EmprestimoService);
+  constructor(
+    private emprestimoService: EmprestimoService,
+    private multaService: MultaService
+  ) {}
 
-  constructor() {
-    this.findAll();
+  ngOnInit(): void {
+    this.listarEmprestimos();
   }
 
-  findAll() {
-    this.emprestimoService.listarEmprestimos().subscribe(
-      {
-        next: value =>{
-          this.emprestimos = value;
-        },
-        error: erro =>{
-          console.log("burro");
+  listarEmprestimos() {
+    this.emprestimoService.listarEmprestimos().subscribe((data: any[]) => {
+      this.emprestimos = data;
+    });
+  }
+
+  devolverLivro(idEmprestimo: number): void {
+    // Chama o serviço para devolver o livro
+    this.emprestimoService.devolverEmprestimo(idEmprestimo).subscribe(() => {
+      this.calcularMulta(idEmprestimo); // Calcula a multa após a devolução
+    });
+  }
+
+  calcularMulta(idEmprestimo: number): void {
+    this.multaService.calcularMulta(idEmprestimo).subscribe(
+      (multa: Multa) => {
+        if (multa.valorMulta > 0) {
+          this.multa = multa;
+          this.mensagemMulta = `A multa é de R$ ${multa.valorMulta.toFixed(2)} devido ao atraso.`;
+        } else {
+          this.mensagemMulta = 'Empréstimo devolvido sem multas.';
         }
+      },
+      (error) => {
+        console.error('Erro ao calcular a multa:', error);
+        this.mensagemMulta = 'Erro ao calcular a multa.';
       }
-    )
+    );
   }
 }

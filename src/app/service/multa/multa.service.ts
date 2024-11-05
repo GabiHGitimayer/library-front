@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Multa } from '../../models/multa.model';
 
@@ -7,15 +7,11 @@ import { Multa } from '../../models/multa.model';
   providedIn: 'root'
 })
 export class MultaService {
-  private apiUrl = 'http://localhost:8080//biblioteca/multa';
+  private apiUrl = 'http://localhost:8080/multas';
 
   constructor(private http: HttpClient) {}
 
-  calcularMulta(emprestimoId: number): Observable<Multa> {
-    return this.http.post<Multa>(`${this.apiUrl}/calcular/${emprestimoId}`, null);
-  }
-
-  atualizarMulta(id: number, multa: Multa): Observable<Multa> {
-    return this.http.put<Multa>(`${this.apiUrl}/atualizar/${id}`, multa);
+  calcularMulta(idEmprestimo: number): Observable<Multa> {
+    return this.http.post<Multa>(`${this.apiUrl}/calcular/${idEmprestimo}`, {});
   }
 }

@@ -8,6 +8,8 @@ import { LivroCadastroComponent } from './components/livros/livro-cadastro/livro
 import { EmprestimoCadastroComponent } from './components/emprestimos/emprestimo-cadastro/emprestimo-cadastro.component';
 import { EmprestimosComponent } from './components/emprestimos/emprestimos.component';
 import { LivroEditarComponent } from './components/livros/livro-editar/livro-editar.component';
+import { UsuarioEditarComponent } from './components/usuarios/usuario-editar/usuario-editar.component';
+
 
 export const routes: Routes = [
     { path: "", component: LoginComponent },
@@ -20,8 +22,9 @@ export const routes: Routes = [
     { path: "biblioteca/usuarios/cadastro", component: UsuarioCadastroComponent },
     { path: "biblioteca/livros/cadastro", component: LivroCadastroComponent },
     { path: "biblioteca/emprestimos/cadastro", component: EmprestimoCadastroComponent },
-    { path: "biblioteca/usuarios/editar/:id", component: UsuarioCadastroComponent },
-    { path: "biblioteca/livros/editar/:id", component: LivroEditarComponent }
+    { path: "biblioteca/usuarios/editar/:id", component: UsuarioEditarComponent },
+    { path: "biblioteca/livros/editar/:id", component: LivroEditarComponent },
+
 
     // { path: "", component: LoginComponent },
     // { path: "login", component: LoginComponent },

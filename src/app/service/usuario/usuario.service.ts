@@ -21,11 +21,11 @@ export class UsuarioService {
   }
 
   getUsuarioById(id: number): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.apiUrl}/${id}`);
+    return this.http.get<Usuario>(`${this.apiUrl}/buscar/${id}`);
   }
 
   atualizarUsuario(id: number, usuario: Usuario): Observable<Usuario> {
-    return this.http.put<Usuario>(`${this.apiUrl}/${id}`, usuario);
+    return this.http.put<Usuario>(`${this.apiUrl}/editar/${id}`, usuario);
   }
 
   deletarUsuario(id: number): Observable<void> {

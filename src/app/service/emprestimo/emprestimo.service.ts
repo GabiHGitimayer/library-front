@@ -7,7 +7,7 @@ import { Emprestimo } from '../../models/emprestimo.model';
   providedIn: 'root'
 })
 export class EmprestimoService {
-  private apiUrl = 'http://localhost:8080/biblioteca/emprestimo';
+  private apiUrl = 'http://localhost:8080/biblioteca/emprestimos';
 
   constructor(private http: HttpClient) {}
 
@@ -20,18 +20,14 @@ export class EmprestimoService {
   }
 
   listarEmprestimos(): Observable<Emprestimo[]> {
-    return this.http.get<Emprestimo[]>(`${this.apiUrl}`);
+    return this.http.get<Emprestimo[]>(`${this.apiUrl}/localizar`);
   }
 
   devolverEmprestimo(id: number): Observable<Emprestimo> {
     return this.http.post<Emprestimo>(`${this.apiUrl}/devolver/${id}`, null);
   }
 
-  getEmprestimoById(id: number): Observable<Emprestimo> {
-    return this.http.get<Emprestimo>(`${this.apiUrl}/localizar/${id}`);
-  }
-
-  deletarEmprestimo(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/deletar/${id}`);
+  realizarDevolucao(idEmprestimo: number): Observable<Emprestimo> {
+    return this.http.post<Emprestimo>(`${this.apiUrl}/devolver/${idEmprestimo}`, {});
   }
 }

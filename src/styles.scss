@@ -27,7 +27,7 @@
     background-color: #844C33;
     opacity: 95%;
     margin: 0;
-    background-size: cover;
+    background-size: c;
     justify-content: space-around;
     width: 100%;
     padding: 1rem;
@@ -136,4 +136,10 @@
 
 .dropdown-item:hover {
     background-color: #555;
+}
+
+.genres-section {
+    flex: 1;
+    padding: 20px;
+    color: bisque;
 }
