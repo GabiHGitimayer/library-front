@@ -34,9 +34,8 @@ export class EmprestimosComponent implements OnInit {
   }
 
   devolverLivro(idEmprestimo: number): void {
-    // Chama o serviço para devolver o livro
     this.emprestimoService.devolverEmprestimo(idEmprestimo).subscribe(() => {
-      this.calcularMulta(idEmprestimo); // Calcula a multa após a devolução
+      this.calcularMulta(idEmprestimo);
     });
   }
 
@@ -44,8 +43,8 @@ export class EmprestimosComponent implements OnInit {
     this.multaService.calcularMulta(idEmprestimo).subscribe(
       (multa: Multa) => {
         if (multa.valorMulta > 0) {
-          this.multa = multa;
-          this.mensagemMulta = `A multa é de R$ ${multa.valorMulta.toFixed(2)} devido ao atraso.`;
+          this.multa = new Multa(multa.valorMulta);
+          this.mensagemMulta = "A multa é de R$ ${multa.valorMulta.toFixed(2)} devido ao atraso.";
         } else {
           this.mensagemMulta = 'Empréstimo devolvido sem multas.';
         }
@@ -53,7 +52,7 @@ export class EmprestimosComponent implements OnInit {
       (error) => {
         console.error('Erro ao calcular a multa:', error);
         this.mensagemMulta = 'Erro ao calcular a multa.';
-      }
-    );
+      }
+    );
   }
 }

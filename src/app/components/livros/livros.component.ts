@@ -21,38 +21,37 @@ export class LivrosComponent {
     this.findAll();
   }
 
-  toggleDropdown(id: number): void {
-    this.dropdownOpenId = this.dropdownOpenId === id ? null : id;
-  }
-
   trackById(index: number, livro: Livro): number {
     return livro.idLivro;
   }
 
-  findAll(): void {
+  findAll() {
     this.livroService.listarLivros().subscribe({
       next: (value) => {
         this.livros = value;
       },
       error: (erro) => {
         console.error("Erro ao buscar livros:", erro);
+        alert("Erro ao buscar livros");
       },
     });
   }
 
-  excluirLivro(idLivro: number): void {
-    if (confirm("Tem certeza que deseja excluir este livro?")) {
-      this.livroService.deletarLivro(idLivro).subscribe({
-        next: () => {
-          console.log(`Livro com ID ${idLivro} excluído com sucesso.`);
-          this.livros = this.livros.filter(livro => livro.idLivro !== idLivro);
-          this.dropdownOpenId = null;
-        },
-        error: (erro) => {
-          console.error("Erro ao excluir livro:", erro);
-          alert("O livro não pode ser excluído por estar vinculado a um empréstimo!");
-        },
-      });
-    }
+  toggleDropdown(idLivro: number) {
+    this.dropdownOpenId = this.dropdownOpenId === idLivro ? null : idLivro;
+  }
+
+  excluirLivro(idLivro: number) {
+    this.livroService.deletarLivro(idLivro).subscribe({
+      next: () => {
+        console.log(`Livro com ID ${idLivro} excluído com sucesso.`);
+        this.livros = this.livros.filter(livro => livro.idLivro !== idLivro);
+        this.dropdownOpenId = null;
+      },
+      error: (erro) => {
+        console.error("Erro ao excluir livro:", erro);
+        alert("O livro não pode ser excluído por estar vinculado a um empréstimo!");
+      },
+    });
   }
 }

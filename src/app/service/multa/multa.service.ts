@@ -12,6 +12,7 @@ export class MultaService {
   constructor(private http: HttpClient) {}
 
   calcularMulta(idEmprestimo: number): Observable<Multa> {
-    return this.http.post<Multa>(`${this.apiUrl}/calcular/${idEmprestimo}`, {});
-  }
+    return this.http.post<Multa>(`${this.apiUrl}/calcular/${idEmprestimo}`, {});
+  }
+
 }

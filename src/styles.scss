@@ -27,7 +27,7 @@
     background-color: #844C33;
     opacity: 95%;
     margin: 0;
-    background-size: c;
+    background-size: cover;
     justify-content: space-around;
     width: 100%;
     padding: 1rem;
@@ -138,8 +138,36 @@
     background-color: #555;
 }
 
+.genres-list {
+    display: flex;
+    flex-direction: column;
+    color: bisque;
+    margin-top: 20px;
+}
+
 .genres-section {
     flex: 1;
     padding: 20px;
+    color: bisque;
+}
+
+.form-section {
+    flex: 2;
+    padding: 20px;
+}
+
+
+.form-check-input {
+    margin-right: 5px;
+}
+
+.button-cad-livro {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 40px;
+    width: 100%;
+    background-color: #9A7E6F;
     color: bisque;
 }

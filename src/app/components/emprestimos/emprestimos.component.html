@@ -1,8 +1,7 @@
-<app-navbar></app-navbar>
+|<app-navbar></app-navbar>
 
 <div class="background background central-content">
     <div class="back-cover">
-
         <section>
             <div>
                 <button class="button-cad-livro" [routerLink]="['/biblioteca/emprestimos/cadastro']">Cadastrar</button>
@@ -18,7 +17,7 @@
                         <th>Data do empréstimo</th>
                         <th>Data de Devolução</th>
                         <th>Status do empréstimo</th>
-                        <th>Editar</th>
+                        <th>Devolução</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,15 +30,11 @@
                         <td>{{ emprestimo.dataDevolucaoEfetiva }}</td>
                         <td>{{ emprestimo.statusEmprestimo }}</td>
                         <td>
-                            <button (click)="devolverLivro(emprestimo.id)">Devolver</button>
-
+                            <button (click)="devolverLivro(emprestimo.idEmprestimo)">Devolver</button>
                             <div *ngIf="multa">
                                 <p>{{ mensagemMulta }}</p>
                             </div>
-
-
                         </td>
-
                     </tr>
                     }
                 </tbody>

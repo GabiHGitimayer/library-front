@@ -19,9 +19,10 @@ import { EmprestimoService } from '../../../service/emprestimo/emprestimo.servic
 export class EmprestimoCadastroComponent {
   idUsuario: number | undefined;
   idLivro: number | undefined;
-  dataEmprestimo: Date | undefined;
-  dataDevolucao: Date = new Date()
-  dataDevolucaoEfetiva: Date = new Date()
+  dataEmprestimo: Date = new Date();
+  dataDevolucao: Date = new Date();
+  dataDevolucaoEfetiva: Date = new Date();
+
   //.setDate((new Date().getDay()+7)) ;
   statusEmprestimo: string = "Emprestado";
 
@@ -46,7 +47,7 @@ export class EmprestimoCadastroComponent {
       dataDevolucao: this.dataDevolucao,
       dataDevolucaoEfetiva: this.dataDevolucaoEfetiva,
       statusEmprestimo: this.statusEmprestimo
-    };
+    };
 
     this.emprestimoService.realizarEmprestimo(novoEmprestimo).subscribe({
       next: (res) => {
@@ -63,6 +64,5 @@ export class EmprestimoCadastroComponent {
     });
   }
 
-  onStatusChange(){}
 
 }

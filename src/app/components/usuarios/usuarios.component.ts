@@ -34,6 +34,7 @@ export class UsuariosComponent {
       },
       error: (erro) => {
         console.error("Erro ao buscar usuários:", erro);
+        alert("Erro ao buscar usuários");
       },
     });
   }
@@ -51,6 +52,7 @@ export class UsuariosComponent {
       },
       error: (erro) => {
         console.error("Erro ao excluir usuário:", erro);
+        alert("Erro ao excluir usuário");
       },
     });
   }

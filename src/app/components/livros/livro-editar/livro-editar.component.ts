@@ -42,6 +42,7 @@ export class LivroEditarComponent implements OnInit {
       },
       (error) => {
         console.error('Erro ao buscar livro:', error);
+        alert("Erro ao buscar livro");
       }
     );
   }

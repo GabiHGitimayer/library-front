@@ -1,15 +1,15 @@
 import { Emprestimo } from "./emprestimo.model";
 
 export class Multa {
-    idMulta: number;
-    emprestimo: Emprestimo[];
+    // idMulta: number;
+    // emprestimo: Emprestimo[];
     valorMulta: number;
-    dataCalculo: Date;
+    // dataCalculo: Date;
 
-    constructor(idMulta: number, emprestimo: Emprestimo[], valorMulta: number, dataCalculo: Date) {
-        this.idMulta = idMulta;
-        this.emprestimo = emprestimo;
+    constructor(valorMulta: number) {
+        // this.idMulta = idMulta;
+        // this.emprestimo = emprestimo;
         this.valorMulta = valorMulta;
-        this.dataCalculo = dataCalculo;
+        // this.dataCalculo = dataCalculo;
     }
 }
