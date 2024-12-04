@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Emprestimo } from '../../models/emprestimo.model';
+import { environment } from '../../../enviroment/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmprestimoService {
-  private apiUrl = 'http://localhost:8080/biblioteca/emprestimos';
+  private apiUrl = `${environment.apiUrl}/biblioteca/emprestimos`;
 
   constructor(private http: HttpClient) {}
 

@@ -30,7 +30,7 @@ export class EmprestimoCadastroComponent {
 
   router = inject(Router);
 
-  constructor(private emprestimoService: EmprestimoService) {}
+  constructor(private emprestimoService: EmprestimoService) { }
 
   cadastrar() {
     if (!this.idUsuario || !this.idLivro || !this.dataEmprestimo) {
@@ -38,7 +38,7 @@ export class EmprestimoCadastroComponent {
       alert("Você não preencheu todos os dados do Empréstimo!");
       return;
     }
-
+  
     const novoEmprestimo: Emprestimo = {
       idEmprestimo: 0,
       usuario: { idUsuario: this.idUsuario } as Usuario,
@@ -47,22 +47,26 @@ export class EmprestimoCadastroComponent {
       dataDevolucao: this.dataDevolucao,
       dataDevolucaoEfetiva: this.dataDevolucaoEfetiva,
       statusEmprestimo: this.statusEmprestimo
-    };
-
+    };
+  
+    // Adicione este log para verificar os dados enviados
+    console.log('Novo Empréstimo:', novoEmprestimo);
+  
     this.emprestimoService.realizarEmprestimo(novoEmprestimo).subscribe({
       next: (res) => {
-        console.log(`Empréstimo do usuário ${res.usuario.nomeUsuario} cadastrado com sucesso!`);
+        console.log('Resposta do backend:', res); // Log da resposta bem-sucedida
         this.emprestimoCadastrado = true;
         setTimeout(() => {
           this.router.navigate(['/biblioteca/emprestimos']);
         }, 2000);
       },
       error: (erro) => {
-        console.error("Erro ao cadastrar o empréstimo:", erro);
-        alert("Ocorreu um erro ao cadastrar o empréstimo. Tente novamente.");
+        console.error('Erro ao cadastrar o empréstimo:', erro); // Log do erro
+        alert('Ocorreu um erro ao cadastrar o empréstimo. Tente novamente.');
       }
     });
   }
+  
 
 
 }

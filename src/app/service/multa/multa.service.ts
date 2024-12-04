@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Multa } from '../../models/multa.model';
+import { environment } from '../../../enviroment/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MultaService {
-  private apiUrl = 'http://localhost:8080/multas';
+  private apiUrl = `${environment.apiUrl}/biblioteca/multas`;
 
   constructor(private http: HttpClient) {}
 
