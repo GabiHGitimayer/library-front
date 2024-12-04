@@ -8,7 +8,7 @@ import { environment } from '../../../enviroment/enviroment';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private apiUrl = `${environment.apiUrl}/biblioteca/usuarios`;
+  private apiUrl = `${environment.apiUrl}/users`;
 
   constructor(private http: HttpClient) {}
 
@@ -22,14 +22,14 @@ export class UsuarioService {
   }
 
   getUsuarioById(id: number): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.apiUrl}/buscar/${id}`);
+    return this.http.get<Usuario>(`${this.apiUrl}/${id}`);
   }
 
   atualizarUsuario(id: number, usuario: Usuario): Observable<Usuario> {
-    return this.http.put<Usuario>(`${this.apiUrl}/editar/${id}`, usuario);
+    return this.http.put<Usuario>(`${this.apiUrl}/${id}`, usuario);
   }
 
   deletarUsuario(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/deletar/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

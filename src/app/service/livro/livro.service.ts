@@ -8,12 +8,12 @@ import { environment } from '../../../enviroment/enviroment';
   providedIn: 'root'
 })
 export class LivroService {
-  private apiUrl = `${environment.apiUrl}/biblioteca/livros`;
+  private apiUrl = `${environment.apiUrl}/books`;
 
   constructor(private http: HttpClient) {}
 
   criarLivro(livro: Livro): Observable<Livro> {
-    return this.http.post<Livro>(`${this.apiUrl}`, livro);
+    return this.http.post<Livro>(`${this.apiUrl}/`, livro);
   }
 
   listarLivros(): Observable<Livro[]> {

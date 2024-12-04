@@ -8,27 +8,23 @@ import { environment } from '../../../enviroment/enviroment';
   providedIn: 'root'
 })
 export class EmprestimoService {
-  private apiUrl = `${environment.apiUrl}/biblioteca/emprestimos`;
+  private apiUrl = `${environment.apiUrl}/loans`;
 
   constructor(private http: HttpClient) {}
 
   realizarEmprestimo(emprestimo: Emprestimo): Observable<Emprestimo> {
-    return this.http.post<Emprestimo>(`${this.apiUrl}/realizar`, emprestimo);
+    return this.http.post<Emprestimo>(`${this.apiUrl}/do`, emprestimo);
   }
 
   atualizarEmprestimo(id: number, emprestimo: Emprestimo): Observable<Emprestimo> {
-    return this.http.put<Emprestimo>(`${this.apiUrl}/atualizar/${id}`, emprestimo);
+    return this.http.put<Emprestimo>(`${this.apiUrl}/update/${id}`, emprestimo);
   }
 
   listarEmprestimos(): Observable<Emprestimo[]> {
-    return this.http.get<Emprestimo[]>(`${this.apiUrl}/localizar`);
+    return this.http.get<Emprestimo[]>(`${this.apiUrl}/locate`);
   }
 
   devolverEmprestimo(id: number): Observable<Emprestimo> {
-    return this.http.post<Emprestimo>(`${this.apiUrl}/devolver/${id}`, null);
-  }
-
-  realizarDevolucao(idEmprestimo: number): Observable<Emprestimo> {
-    return this.http.post<Emprestimo>(`${this.apiUrl}/devolver/${idEmprestimo}`, {});
+    return this.http.post<Emprestimo>(`${this.apiUrl}/return/${id}`, null);
   }
 }

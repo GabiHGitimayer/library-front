@@ -9,7 +9,7 @@ import { environment } from '../../../enviroment/enviroment';
   providedIn: 'root'
 })
 export class HistoricoService {
-  private apiUrl = `${environment.apiUrl}/biblioteca/historico`;
+  private apiUrl = `${environment.apiUrl}/history`;
 
   constructor(private http: HttpClient) {}
 

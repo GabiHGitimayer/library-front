@@ -8,12 +8,12 @@ import { environment } from '../../../enviroment/enviroment';
   providedIn: 'root'
 })
 export class MultaService {
-  private apiUrl = `${environment.apiUrl}/biblioteca/multas`;
+  private apiUrl = `${environment.apiUrl}/fine`;
 
   constructor(private http: HttpClient) {}
 
   calcularMulta(idEmprestimo: number): Observable<Multa> {
-    return this.http.post<Multa>(`${this.apiUrl}/calcular/${idEmprestimo}`, {});
+    return this.http.post<Multa>(`${this.apiUrl}/calculate/${idEmprestimo}`, {});
   }
 
 }
