@@ -2,12 +2,28 @@
   <div class="login-block">
     <h1 class="text-style">BIBLIOTECA</h1>
     <div>
-      <label class="text-style"  for="name"  >Usuário</label>
-      <input mdbInput class="input-style" type="user" id="login" name="login" placeholder="Insira seu Usuário" >
+      <label class="text-style" for="name">Usuário</label>
+      <input
+        mdbInput
+        class="input-style"
+        type="text"
+        id="login"
+        name="login"
+        placeholder="Insira seu Usuário"
+        [(ngModel)]="login"
+      />
     </div>
     <div>
-      <label class="text-style"  for="password">Senha</label>
-      <input mdbInput class="input-style" id="password" type="password" name="password" placeholder="Insira sua senha">
+      <label class="text-style" for="password">Senha</label>
+      <input
+        mdbInput
+        class="input-style"
+        id="password"
+        type="password"
+        name="password"
+        placeholder="Insira sua senha"
+        [(ngModel)]="password"
+      />
     </div>
     <div>
       <button class="button-style" (click)="logar()">Acessar</button>

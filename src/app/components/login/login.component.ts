@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth/auth.service';
-import { Login } from '../../models/auth.model';
+import { Login, LoginResponseDTO } from '../../models/auth.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
+  imports: [FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -16,15 +18,16 @@ export class LoginComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
 
-  logar() {
+  logar(): void {
     const loginData: Login = {
       login: this.login,
       password: this.password
     };
 
     this.authService.realizarAuth(loginData).subscribe({
-      next: (response) => {
+      next: (response: LoginResponseDTO) => {
         console.log('Login bem-sucedido:', response);
+        localStorage.setItem('token', response.token)
         this.router.navigate(['/biblioteca']);
       },
       error: (err) => {

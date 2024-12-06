@@ -1,5 +1,10 @@
 import { TipoUsuario } from "./usuario.model";
 
+export type LoginResponseDTO = {
+    message: string;
+    token: string;
+}
+
 export class Login {
     login: string;
     password: string;

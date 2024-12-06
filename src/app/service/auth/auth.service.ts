@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { environment } from "../../../enviroment/enviroment";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Login, Register } from "../../models/auth.model";
+import { Login, LoginResponseDTO, Register } from "../../models/auth.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,11 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  realizarAuth(login: Login): Observable<Login> {
-    return this.http.post<Login>(`${this.apiUrl}/login`, login);
+  realizarAuth(login: Login): Observable<LoginResponseDTO> {
+    const response = this.http.post<LoginResponseDTO>(`${this.apiUrl}/login`, login);
+    console.log("Response: ", response);
+    
+    return response;
   }
 
   //se questionarem essa porra em "auth" ao inves de "usuário", responda aqui, quem bota código com acento e em portugues? fdp
