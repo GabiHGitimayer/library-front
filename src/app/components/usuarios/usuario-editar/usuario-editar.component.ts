@@ -64,8 +64,4 @@ export class UsuarioEditarComponent implements OnInit {
       }
     );
   }
-
-  onTipoUsuarioChange() {
-    console.log("Tipo de usuário atualizado:", this.tipoUsuario);
-  }
 }

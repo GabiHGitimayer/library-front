@@ -1,5 +1,3 @@
-import { Emprestimo } from "./emprestimo.model";
-
 export class Multa {
     // idMulta: number;
     // emprestimo: Emprestimo[];

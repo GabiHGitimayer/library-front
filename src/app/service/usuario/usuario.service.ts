@@ -12,11 +12,6 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) {}
 
-  criarUsuario(usuario: Usuario): Observable<Usuario> {
-    console.log("inicio da função")
-    return this.http.post<Usuario>(`${this.apiUrl}/save`, usuario);
-  }
-
   listarUsuarios(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(`${this.apiUrl}`);
   }

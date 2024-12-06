@@ -5,8 +5,9 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
-import { UsuarioService } from '../../../service/usuario/usuario.service';
-import { TipoUsuario, Usuario } from '../../../models/usuario.model';
+import { TipoUsuario } from '../../../models/usuario.model';
+import { AuthService } from '../../../service/auth/auth.service';
+import { Register } from '../../../models/auth.model';
 
 @Component({
   selector: 'app-usuario-cadastro',
@@ -16,53 +17,41 @@ import { TipoUsuario, Usuario } from '../../../models/usuario.model';
   styleUrl: './usuario-cadastro.component.scss'
 })
 export class UsuarioCadastroComponent {
-  nomeUsuario:string = "";
-  cpf:string = "";
-  senha:string = "";
-  tipoUsuario: TipoUsuario = TipoUsuario.USUARIO;
-
+  name: string = "";
+  password: string = "";
+  cpf: string = "";
+  email: string = "";
+  type: TipoUsuario = TipoUsuario.USUARIO;
   usuarioCadastrado: boolean = false;
 
   router = inject(Router);
-
-  constructor(private usuarioService: UsuarioService) {}
-
-  onTipoUsuarioChange() {
-    console.log("Tipo de usuário selecionado:", this.tipoUsuario);
-  }
+  private authService = inject(AuthService);
 
   cadastrar() {
-    if (this.nomeUsuario === '' || this.cpf === '' || this.senha === '') {
-      console.log("Preencha os dados do Usuário!");
+    if (this.name === '' || this.cpf === '' || this.password === '') {
       alert("Você não preencheu todos os dados do Usuário!");
     }
-
-    
-      const novoUsuario: Usuario = {
-        idUsuario: 0,
-        nomeUsuario: this.nomeUsuario,
+      const novoUsuario: Register = {
+        name: this.name,
         cpf: this.cpf,
-        senha: this.senha,
-        tipoUsuario: this.tipoUsuario
-
+        password: this.password,
+        type: this.type,
+        email: this.email
       }
 
-      
-      this.usuarioService.criarUsuario(novoUsuario).subscribe({
-        next: (res) => {
-          console.log(`Usuário ${res.nomeUsuario} cadastrado com sucesso!`);
-          this.usuarioCadastrado = true;
-          console.log("Resposta", res)
-        
-          setTimeout(() => {
-            this.router.navigate(['/biblioteca/usuarios']);
-          }, 2000);
-        },
-        error: (erro) => {
-          console.error("Erro ao cadastrar o usuário:", erro);
-          alert("Ocorreu um erro ao cadastrar o usuário. Tente novamente.");
-        }
-  });
+      this.authService.registrarAuth(novoUsuario).subscribe({
+  next: (res: any) => {
+    this.usuarioCadastrado = true;
+
+    setTimeout(() => {
+      this.router.navigate(['/biblioteca/usuarios']);
+    }, 2000);
+  },
+  error: (erro: any) => {
+    console.error("Erro ao cadastrar o usuário:", erro);
+    alert("Ocorreu um erro ao cadastrar o usuário. Tente novamente.");
+  }
+});
     }
   
 }

@@ -49,19 +49,18 @@ export class EmprestimoCadastroComponent {
       statusEmprestimo: this.statusEmprestimo
     };
   
-    // Adicione este log para verificar os dados enviados
     console.log('Novo Empréstimo:', novoEmprestimo);
   
     this.emprestimoService.realizarEmprestimo(novoEmprestimo).subscribe({
       next: (res) => {
-        console.log('Resposta do backend:', res); // Log da resposta bem-sucedida
+        console.log('Resposta do backend:', res);
         this.emprestimoCadastrado = true;
         setTimeout(() => {
           this.router.navigate(['/biblioteca/emprestimos']);
         }, 2000);
       },
       error: (erro) => {
-        console.error('Erro ao cadastrar o empréstimo:', erro); // Log do erro
+        console.error('Erro ao cadastrar o empréstimo:', erro);
         alert('Ocorreu um erro ao cadastrar o empréstimo. Tente novamente.');
       }
     });

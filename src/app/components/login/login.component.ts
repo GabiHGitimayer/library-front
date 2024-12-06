@@ -1,34 +1,36 @@
 import { Component, inject } from '@angular/core';
-
-import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../service/auth/auth.service';
+import { Login } from '../../models/auth.model';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  nomeAF:string = "";
-  senhaAF:string = "";
+  login:string = "";
+  password:string = "";
 
-  router = inject(Router);
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
   logar() {
-    if (this.nomeAF == "Admin" && this.senhaAF == "admin") { 
-      console.log(`Acesso ao ADMIN ${this.nomeAF} liberado!`);
+    const loginData: Login = {
+      login: this.login,
+      password: this.password
+    };
 
-      this.router.navigate(['/biblioteca']);
-    } else if (this.nomeAF == "Funcionario" && this.senhaAF == "funcionario") {
-      console.log(`Acesso ao FUNCIONÁRIO ${this.nomeAF} liberado!`);
-
-      this.router.navigate(['/biblioteca']);
-    } else {
-      console.log("Acesso negado!");
-      alert("Nome de usuário ou senha inválidos!");
-    }
+    this.authService.realizarAuth(loginData).subscribe({
+      next: (response) => {
+        console.log('Login bem-sucedido:', response);
+        this.router.navigate(['/biblioteca']);
+      },
+      error: (err) => {
+        console.error('Erro ao realizar login:', err);
+        alert('Nome de usuário ou senha inválidos!');
+      }
+    });
   }
 }

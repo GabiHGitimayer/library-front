@@ -8,8 +8,8 @@
       <form>
         <div class="form-group">
           <label mdbLabel class="form-label" for="nome">Nome do usuário</label>
-          <input mdbInput type="text" class="form-control" id="nomeUsuario" [(ngModel)]="nomeUsuario"
-            name="nomeUsuario" />
+          <input mdbInput type="text" class="form-control" id="name" [(ngModel)]="name"
+            name="name" />
         </div>
 
         <div class="form-group">
@@ -18,26 +18,26 @@
         </div>
 
         <div class="form-group">
-          <label mdbLabel class="form-label" for="senha">Senha do usuário</label>
-          <input mdbInput type="password" class="form-control" id="senha" [(ngModel)]="senha" name="senha" />
+          <label mdbLabel class="form-label" for="password">Senha do usuário</label>
+          <input mdbInput type="password" class="form-control" id="password" [(ngModel)]="password" name="password" />
         </div>
 
         <section class="select-list">
         <div class="form-check">
           <h5>Tipo de usuário</h5>
           <div>
-            <input class="form-check-input" type="radio" name="tipoUsuario" [(ngModel)]="tipoUsuario" value="USUARIO"
-              id="usuario" (change)="onTipoUsuarioChange()" checked />
+            <input class="form-check-input" type="radio" name="type" [(ngModel)]="type" value="USUARIO"
+              id="usuario" checked />
             <label class="form-check-label" for="usuario"> Usuário </label>
           </div>
           <div>
-            <input class="form-check-input" type="radio" name="tipoUsuario" [(ngModel)]="tipoUsuario" value="ADM"
-              id="admin" (change)="onTipoUsuarioChange()" />
+            <input class="form-check-input" type="radio" name="type" [(ngModel)]="type" value="ADM"
+              id="admin" />
             <label class="form-check-label" for="ADM"> Administrador </label>
           </div>
           <div>
-            <input class="form-check-input" type="radio" name="tipoUsuario" [(ngModel)]="tipoUsuario"
-              value="FUNCIONARIO" id="funcionario" (change)="onTipoUsuarioChange()" />
+            <input class="form-check-input" type="radio" name="type" [(ngModel)]="type"
+              value="FUNCIONARIO" id="funcionario" />
             <label class="form-check-label" for="funcionario"> Funcionário </label>
           </div>
         </div>
@@ -47,7 +47,6 @@
         <button mdbRipple type="button" class="btn btn-secondary btn-block"
           [routerLink]="['/biblioteca/usuarios']">Cancelar</button>
       </form>
-      
     </section>
   </div>
 </div>
