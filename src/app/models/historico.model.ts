@@ -1,6 +1,6 @@
 import { Emprestimo } from "./emprestimo.model";
 import { Livro } from "./livro.model";
-import { Usuario } from "./usuario.model";
+import { Usuario } from "./user.model";
 
 export class Historico {
     idHistorico: number;

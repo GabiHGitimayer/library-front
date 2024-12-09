@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { NavbarComponent } from '../../navbar/navbar.component';
-import { TipoUsuario, Usuario } from '../../../models/usuario.model';
+import { userType, User } from '../../../models/user.model';
 import { UsuarioService } from '../../../service/usuario/usuario.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class UsuarioEditarComponent implements OnInit {
   nomeUsuario:string = "";
   cpf:string = "";
   senha:string = "";
-  tipoUsuario!: TipoUsuario;
+  userType!: userType;
   usuarioEditado: boolean = false;
 
   ngOnInit() {
@@ -31,10 +31,10 @@ export class UsuarioEditarComponent implements OnInit {
 
     this.usuarioService.getUsuarioById(this.idUsuario).subscribe(
       (usuario) => {
-        this.nomeUsuario = usuario.nomeUsuario;
-        this.cpf = usuario.cpf;
-        this.senha = usuario.senha;
-        this.tipoUsuario = usuario.tipoUsuario;
+        this.nomeUsuario = usuario.userName;
+        this.cpf = usuario.userCpf;
+        this.senha = usuario.userPassword;
+        this.userType = usuario.userType;
       },
       (error) => {
         console.error('Erro ao buscar o usuário:', error);
@@ -43,17 +43,17 @@ export class UsuarioEditarComponent implements OnInit {
   }
 
   editar() {
-    const usuarioAtualizado: Usuario = {
-      idUsuario: this.idUsuario,
-      nomeUsuario: this.nomeUsuario,
-      cpf: this.cpf,
-      senha: this.senha,
-      tipoUsuario: this.tipoUsuario
+    const usuarioAtualizado: User = {
+      userId: this.idUsuario,
+      userName: this.nomeUsuario,
+      userCpf: this.cpf,
+      userPassword: this.senha,
+      userType: this.userType
     };
 
     this.usuarioService.atualizarUsuario(this.idUsuario, usuarioAtualizado).subscribe(
       (response) => {
-        console.log(`Usuário ${response.nomeUsuario} atualizado com sucesso!`);
+        console.log(`Usuário ${response.userName} atualizado com sucesso!`);
         this.usuarioEditado = true;
 
         this.router.navigate(['/biblioteca/usuarios']);

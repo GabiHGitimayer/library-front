@@ -19,7 +19,7 @@ export class AuthService {
     return response;
   }
 
-  //se questionarem essa porra em "auth" ao inves de "usuário", responda aqui, quem bota código com acento e em portugues? fdp
+  
   registrarAuth(register: Register): Observable<Register> {
     return this.http.post<Register>(`${this.apiUrl}/register`, register);
   }

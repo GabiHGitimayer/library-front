@@ -1,27 +1,30 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Usuario } from '../../models/usuario.model';
+import { User } from '../../models/user.model';
 import { environment } from '../../../enviroment/enviroment';
+import { LocalStorageService } from '../LocalStorage/localStorage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
-  private apiUrl = `${environment.apiUrl}/users`;
+  private apiUrl = `${environment.apiUrl}/user`;
 
   constructor(private http: HttpClient) {}
 
-  listarUsuarios(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(`${this.apiUrl}`);
+  listarUsuarios(): Observable<User[]> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<User[]>(`${this.apiUrl}`, { headers });
   }
 
-  getUsuarioById(id: number): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.apiUrl}/${id}`);
+  getUsuarioById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/${id}`);
   }
 
-  atualizarUsuario(id: number, usuario: Usuario): Observable<Usuario> {
-    return this.http.put<Usuario>(`${this.apiUrl}/${id}`, usuario);
+  atualizarUsuario(id: number, usuario: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/${id}`, usuario);
   }
 
   deletarUsuario(id: number): Observable<void> {

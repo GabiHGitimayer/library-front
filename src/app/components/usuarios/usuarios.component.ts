@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { UsuarioService } from '../../service/usuario/usuario.service';
-import { Usuario } from '../../models/usuario.model';
+import { User } from '../../models/user.model';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { RouterLink } from '@angular/router';
 import { NgFor, CommonModule } from '@angular/common';
@@ -13,7 +13,7 @@ import { NgFor, CommonModule } from '@angular/common';
   styleUrls: ['./usuarios.component.scss']
 })
 export class UsuariosComponent {
-  usuarios: Usuario[] = [];
+  usuarios: User[] = [];
   dropdownOpenId: number | null = null;
   usuarioService = inject(UsuarioService);
 
@@ -23,8 +23,8 @@ export class UsuariosComponent {
     this.listAllUsers();
   }
 
-  trackById(index: number, usuario: Usuario): number {
-    return usuario.idUsuario;
+  trackById(index: number, usuario: User): number {
+    return usuario.userId;
   }
 
   listAllUsers() {
@@ -39,15 +39,15 @@ export class UsuariosComponent {
     });
   }
 
-  toggleDropdown(idUsuario: number) {
-    this.dropdownOpenId = this.dropdownOpenId === idUsuario ? null : idUsuario;
+  toggleDropdown(userId: number) {
+    this.dropdownOpenId = this.dropdownOpenId === userId ? null : userId;
   }
 
-  excluirUsuario(idUsuario: number) { 
-    this.usuarioService.deletarUsuario(idUsuario).subscribe({
+  excluirUsuario(userId: number) { 
+    this.usuarioService.deletarUsuario(userId).subscribe({
       next: () => {
-        console.log(`Usuário com ID ${idUsuario} excluído com sucesso.`);
-        this.usuarios = this.usuarios.filter(usuario => usuario.idUsuario !== idUsuario);
+        console.log(`Usuário com ID ${userId} excluído com sucesso.`);
+        this.usuarios = this.usuarios.filter(usuario => usuario.userId !== userId);
         this.dropdownOpenId = null;
       },
       error: (erro) => {

@@ -5,7 +5,7 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
-import { TipoUsuario } from '../../../models/usuario.model';
+import { userType } from '../../../models/user.model';
 import { AuthService } from '../../../service/auth/auth.service';
 import { Register } from '../../../models/auth.model';
 
@@ -21,7 +21,7 @@ export class UsuarioCadastroComponent {
   password: string = "";
   cpf: string = "";
   email: string = "";
-  type: TipoUsuario = TipoUsuario.USUARIO;
+  type: userType = userType.USUARIO;
   usuarioCadastrado: boolean = false;
 
   router = inject(Router);

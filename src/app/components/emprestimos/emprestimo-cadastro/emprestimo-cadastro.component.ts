@@ -5,7 +5,7 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { Emprestimo } from '../../../models/emprestimo.model';
-import { Usuario } from '../../../models/usuario.model';
+import { User } from '../../../models/user.model';
 import { Livro } from '../../../models/livro.model';
 import { EmprestimoService } from '../../../service/emprestimo/emprestimo.service';
 
@@ -41,7 +41,7 @@ export class EmprestimoCadastroComponent {
   
     const novoEmprestimo: Emprestimo = {
       idEmprestimo: 0,
-      usuario: { idUsuario: this.idUsuario } as Usuario,
+      usuario: { userId: this.idUsuario } as User,
       livro: { idLivro: this.idLivro } as Livro,
       dataEmprestimo: this.dataEmprestimo,
       dataDevolucao: this.dataDevolucao,

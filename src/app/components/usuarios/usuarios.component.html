@@ -19,19 +19,19 @@
                 </thead>
                 <tbody>
                     <tr class="text-style-list" *ngFor="let usuario of usuarios; trackBy: trackById">
-                        <td>{{ usuario.idUsuario }}</td>
-                        <td>{{ usuario.nomeUsuario }}</td>
-                        <td>{{ usuario.cpf }}</td>
-                        <td>{{ usuario.tipoUsuario }}</td>
+                        <td>{{ usuario.userId }}</td>
+                        <td>{{ usuario.userName }}</td>
+                        <td>{{ usuario.userCpf }}</td>
+                        <td>{{ usuario.userType }}</td>
 
                         <td>
-                            <button class="dropdown-toggle" (click)="toggleDropdown(usuario.idUsuario)"></button>
+                            <button class="dropdown-toggle" (click)="toggleDropdown(usuario.userId)"></button>
 
-                            <div class="dropdown-menu" *ngIf="dropdownOpenId === usuario.idUsuario">
+                            <div class="dropdown-menu" *ngIf="dropdownOpenId === usuario.userId">
                                 <button class="dropdown-item"
-                                    [routerLink]="['/biblioteca/usuarios/editar', usuario.idUsuario]">Editar</button>
+                                    [routerLink]="['/biblioteca/usuarios/editar', usuario.userId]">Editar</button>
                                 <button class="dropdown-item"
-                                    (click)="excluirUsuario(usuario.idUsuario)">Excluir</button>
+                                    (click)="excluirUsuario(usuario.userId)">Excluir</button>
                             </div>
                         </td>
                     </tr>

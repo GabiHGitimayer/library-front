@@ -13,7 +13,7 @@ export class EmprestimoService {
   constructor(private http: HttpClient) {}
 
   realizarEmprestimo(emprestimo: Emprestimo): Observable<Emprestimo> {
-    return 
+    return this.http.post<Emprestimo>(`${this.apiUrl}/realizar`, emprestimo); 
     
   }
 

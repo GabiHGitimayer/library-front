@@ -1,4 +1,4 @@
-import { TipoUsuario } from "./usuario.model";
+import { userType } from "./user.model";
 
 export type LoginResponseDTO = {
     message: string;
@@ -20,9 +20,9 @@ export class Register {
     password: string;
     email: string;
     cpf: string;
-    type: TipoUsuario
+    type: userType
 
-    constructor(name: string, password: string, email: string, cpf: string, type: TipoUsuario) {
+    constructor(name: string, password: string, email: string, cpf: string, type: userType) {
         this.name = name;
         this.password = password;
         this.email = email;
