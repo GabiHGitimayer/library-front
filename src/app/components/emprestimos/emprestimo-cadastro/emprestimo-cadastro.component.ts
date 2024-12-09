@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { Emprestimo } from '../../../models/emprestimo.model';
+import { Emprestimo, realizeLoan } from '../../../models/emprestimo.model';
 import { User } from '../../../models/user.model';
 import { Livro } from '../../../models/livro.model';
 import { EmprestimoService } from '../../../service/emprestimo/emprestimo.service';
@@ -17,14 +17,14 @@ import { EmprestimoService } from '../../../service/emprestimo/emprestimo.servic
   styleUrls: ['./emprestimo-cadastro.component.scss']
 })
 export class EmprestimoCadastroComponent {
-  idUsuario: number | undefined;
-  idLivro: number | undefined;
-  dataEmprestimo: Date = new Date();
-  dataDevolucao: Date = new Date();
-  dataDevolucaoEfetiva: Date = new Date();
+  userId: number | undefined;
+  bookId: number | undefined;
+  loanDate: Date = new Date();
+  returnDate: Date = new Date();
+  efectiveReturnDate: Date = new Date();
 
   //.setDate((new Date().getDay()+7)) ;
-  statusEmprestimo: string = "Emprestado";
+  loanStatus: string = "Emprestado";
 
   emprestimoCadastrado: boolean = false;
 
@@ -33,20 +33,19 @@ export class EmprestimoCadastroComponent {
   constructor(private emprestimoService: EmprestimoService) { }
 
   cadastrar() {
-    if (!this.idUsuario || !this.idLivro || !this.dataEmprestimo) {
+    if (!this.bookId || !this.bookId || !this.loanDate) {
       console.log("Preencha os dados do Empréstimo!");
       alert("Você não preencheu todos os dados do Empréstimo!");
       return;
     }
   
-    const novoEmprestimo: Emprestimo = {
-      idEmprestimo: 0,
-      usuario: { userId: this.idUsuario } as User,
-      livro: { idLivro: this.idLivro } as Livro,
-      dataEmprestimo: this.dataEmprestimo,
-      dataDevolucao: this.dataDevolucao,
-      dataDevolucaoEfetiva: this.dataDevolucaoEfetiva,
-      statusEmprestimo: this.statusEmprestimo
+    const novoEmprestimo: realizeLoan = {
+      user: { userId: this.bookId } as User,
+      book: { bookId: this.bookId } as Livro,
+      loanDate: this.loanDate,
+      returnDate: this.returnDate,
+      efectiveReturnDate: this.efectiveReturnDate,
+      loanStatus: this.loanStatus
     };
   
     console.log('Novo Empréstimo:', novoEmprestimo);

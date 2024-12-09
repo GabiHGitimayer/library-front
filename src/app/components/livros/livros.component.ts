@@ -22,7 +22,7 @@ export class LivrosComponent {
   }
 
   trackById(index: number, livro: Livro): number {
-    return livro.idLivro;
+    return livro.bookId;
   }
 
   findAll() {
@@ -37,15 +37,15 @@ export class LivrosComponent {
     });
   }
 
-  toggleDropdown(idLivro: number) {
-    this.dropdownOpenId = this.dropdownOpenId === idLivro ? null : idLivro;
+  toggleDropdown(bookId: number) {
+    this.dropdownOpenId = this.dropdownOpenId === bookId ? null : bookId;
   }
 
-  excluirLivro(idLivro: number) {
-    this.livroService.deletarLivro(idLivro).subscribe({
+  excluirLivro(bookId: number) {
+    this.livroService.deletarLivro(bookId).subscribe({
       next: () => {
-        console.log(`Livro com ID ${idLivro} excluído com sucesso.`);
-        this.livros = this.livros.filter(livro => livro.idLivro !== idLivro);
+        console.log(`Livro com ID ${bookId} excluído com sucesso.`);
+        this.livros = this.livros.filter(livro => livro.bookId !== bookId);
         this.dropdownOpenId = null;
       },
       error: (erro) => {

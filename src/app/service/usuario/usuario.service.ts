@@ -29,13 +29,7 @@ export class UsuarioService {
     return this.apiRequest.apiRequest<User>(`${this.apiUrl}/${id}`, config);
   }
   
-  criarUsuario(usuario: User): Observable<User> {
-    const config = {
-      method: 'POST',
-      body: usuario
-    }
-    return this.apiRequest.apiRequest<User>(`${this.apiUrl}/save`, config);
-  }
+
   
   //PUT E DELETE SEM O "CONFIG"
   atualizarUsuario(id: number, usuario: User): Observable<User> {

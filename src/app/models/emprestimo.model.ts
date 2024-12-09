@@ -20,3 +20,12 @@ export class Emprestimo {
         this.statusEmprestimo = statusEmprestimo;
     }
 }
+
+export type realizeLoan = {
+    user: User;
+    book: Livro;
+    loanDate: Date;
+    returnDate: Date;
+    efectiveReturnDate: Date;
+    loanStatus: string;
+}

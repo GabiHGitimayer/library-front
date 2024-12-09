@@ -32,7 +32,7 @@ export class UsuarioEditarComponent implements OnInit {
 
     this.usuarioService.listarUsuariosPeloID(this.idUsuario).subscribe(
       (usuario) => {
-        this.userName = usuario.userName;
+        this.userName = usuario.username;
         this.cpf = usuario.userCpf;
         this.senha = usuario.userPassword;
         this.userType = usuario.userType;
@@ -46,7 +46,7 @@ export class UsuarioEditarComponent implements OnInit {
   editar() {
     const usuarioAtualizado: User = {
       userId: this.idUsuario,
-      userName: this.userName,
+      username: this.userName,
       userCpf: this.cpf,
       userPassword: this.senha,
       userType: this.userType
@@ -54,7 +54,7 @@ export class UsuarioEditarComponent implements OnInit {
 
     this.usuarioService.atualizarUsuario(this.idUsuario, usuarioAtualizado).subscribe(
       (response) => {
-        console.log(`Usuário ${response.userName} atualizado com sucesso!`);
+        console.log(`Usuário ${response.username} atualizado com sucesso!`);
         this.usuarioEditado = true;
 
         this.router.navigate(['/biblioteca/usuarios']);

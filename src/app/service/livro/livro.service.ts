@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Livro } from '../../models/livro.model';
+import { Livro, registerBooks } from '../../models/livro.model';
 import { environment } from '../../../enviroment/enviroment';
 import { ApiRequest } from '../apiRequest';
 
@@ -13,7 +13,7 @@ export class LivroService {
 
   constructor(private apiRequest: ApiRequest, private http: HttpClient) {}
 
-  criarLivro(livro: Livro): Observable<Livro> {
+  criarLivro(livro: registerBooks): Observable<Livro> {
     const config = {
       method: 'POST', 
       body: livro

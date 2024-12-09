@@ -19,26 +19,26 @@ export class LivroEditarComponent implements OnInit {
   router = inject(Router);
   route = inject(ActivatedRoute);
 
-  idLivro!: number;
-  titulo: string = '';
-  autor: string = '';
-  genero: string = '';
+  bookId!: number;
+  title: string = '';
+  author: string = '';
+  genre: string = '';
   isbn: string = '';
-  anoPublicacao!: number;
-  quantExemplares!: number;
+  publicationYear!: number;
+  copiesQuantity!: number;
   livroEditado: boolean = false;
 
   ngOnInit() {
-    this.idLivro = +this.route.snapshot.paramMap.get('id')!;
+    this.bookId = +this.route.snapshot.paramMap.get('id')!;
 
-    this.livroService.getLivroById(this.idLivro).subscribe(
+    this.livroService.getLivroById(this.bookId).subscribe(
       (livro) => {
-        this.titulo = livro.titulo;
-        this.autor = livro.autor;
-        this.genero = livro.genero;
+        this.title = livro.title;
+        this.author = livro.author;
+        this.genre = livro.genre;
         this.isbn = livro.isbn;
-        this.anoPublicacao = livro.anoPublicacao;
-        this.quantExemplares = livro.quantExemplares;
+        this.publicationYear = livro.publicationYear;
+        this.copiesQuantity = livro.copiesQuantity;
       },
       (error) => {
         console.error('Erro ao buscar livro:', error);
@@ -49,30 +49,30 @@ export class LivroEditarComponent implements OnInit {
 
   editar() {
     const livroAtualizado: Livro = {
-      idLivro: this.idLivro,
-      titulo: this.titulo,
-      autor: this.autor,
-      genero: this.genero,
+      bookId: this.bookId,
+      title: this.title,
+      author: this.author,
+      genre: this.genre,
       isbn: this.isbn,
-      anoPublicacao: this.anoPublicacao,
-      quantExemplares: this.quantExemplares
+      publicationYear: this.publicationYear,
+      copiesQuantity: this.copiesQuantity
     };
 
-    this.livroService.atualizarLivro(this.idLivro, livroAtualizado).subscribe(
+    this.livroService.atualizarLivro(this.bookId, livroAtualizado).subscribe(
       (response) => {
-        console.log(`Livro ${response.titulo} atualizado com sucesso!`);
+        console.log(`Livro ${response.title} atualizado com sucesso!`);
         this.livroEditado = true;
 
         this.router.navigate(['/biblioteca/livros']);
       },
       (error) => {
         console.error("Erro ao atualizar o livro:", error);
-        alert(`Ocorreu um erro ao atualizar o livro ${this.titulo}. Tente novamente.`);
+        alert(`Ocorreu um erro ao atualizar o livro ${this.title}. Tente novamente.`);
       }
     );
   }
 
   onGeneroChange() {
-    console.log("Gênero alterado:", this.genero);
+    console.log("Gênero alterado:", this.genre);
   }
 }

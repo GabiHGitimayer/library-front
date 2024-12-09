@@ -10,12 +10,12 @@
 
                 <div class="form-group">
                     <label for="titulo" class="form-label">Título</label>
-                    <input mdbInput type="text" id="titulo" class="form-control" name="titulo" [(ngModel)]="titulo"
+                    <input mdbInput type="text" id="titulo" class="form-control" name="titulo" [(ngModel)]="title"
                         required />
                 </div>
                 <div class="form-group">
                     <label for="autor" class="form-label">Autor</label>
-                    <input mdbInput type="text" id="autor" class="form-control" name="autor" [(ngModel)]="autor"
+                    <input mdbInput type="text" id="autor" class="form-control" name="autor" [(ngModel)]="author"
                         required />
                 </div>
                 <div class="form-group">
@@ -26,12 +26,12 @@
                 <div class="form-group">
                     <label for="anoPublicacao" class="form-label">Ano de publicação</label>
                     <input mdbInput type="number" id="anoPublicacao" class="form-control" name="anoPublicacao"
-                        [(ngModel)]="anoPublicacao" required />
+                        [(ngModel)]="publicationYear" required />
                 </div>
                 <div class="form-group">
                     <label for="quantExemplares" class="form-label">Quantidade</label>
                     <input mdbInput type="number" id="quantExemplares" class="form-control" name="quantExemplares"
-                        [(ngModel)]="quantExemplares" required />
+                        [(ngModel)]="copiesQuantity" required />
                 </div>
 
             </form>
@@ -42,63 +42,63 @@
             <div class="genres-list">
 
                 <div>
-                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genero"
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genre"
                         value="Aventura" />
                     <label mdbLabel class="form-check-label">Aventura</label>
                 </div>
                 <div>
-                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genero"
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genre"
                         value="Ficção Científica" />
                     <label mdbLabel class="form-check-label">Ficção Científica</label>
                 </div>
                 <div>
-                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genero"
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genre"
                         value="Fantasia" />
                     <label mdbLabel class="form-check-label">Fantasia</label>
                 </div>
                 <div>
-                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genero"
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genre"
                         value="Terror" />
                     <label mdbLabel class="form-check-label">Terror</label>
                 </div>
                 <div>
-                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genero"
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genre"
                         value="Suspense" />
                     <label mdbLabel class="form-check-label">Suspense</label>
                 </div>
 
                 <div>
-                    <input mdbInput type="radio" class="form-check-input" name="genero" value="Romance" />
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genre"  value="Romance" />
                     <label mdbLabel class="form-check-label">Romance</label>
                 </div>
 
                 <div>
-                    <input mdbInput type="radio" class="form-check-input" name="genero" value="Infantil" />
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genre" value="Infantil" />
                     <label mdbLabel class="form-check-label">Infantil</label>
                 </div>
 
                 <div>
-                    <input mdbInput type="radio" class="form-check-input" name="genero" value="Biografia" />
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genre" value="Biografia" />
                     <label mdbLabel class="form-check-label">Biografia</label>
                 </div>
 
                 <div>
-                    <input mdbInput type="radio" class="form-check-input" name="genero" value="Poesia" />
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genre" value="Poesia" />
                     <label mdbLabel class="form-check-label">Poesia</label>
                 </div>
 
                 <div>
-                    <input mdbInput type="radio" class="form-check-input" name="genero" value="Autoajuda" />
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genre" value="Autoajuda" />
                     <label mdbLabel class="form-check-label">Autoajuda</label>
                 </div>
 
                 <div>
-                    <input mdbInput type="radio" class="form-check-input" name="genero" value="Quadrinhos" />
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genre" value="Quadrinhos" />
                     <label mdbLabel class="form-check-label">Quadrinhos</label>
                 </div>
 
                 <div>
-                    <input mdbInput type="radio" class="form-check-input" name="genero" value="História" />
+                    <input mdbInput type="radio" class="form-check-input" name="genero" [(ngModel)]="genre" value="História" />
                     <label mdbLabel class="form-check-label">História</label>
                 </div>
 

@@ -6,7 +6,7 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { LivroService } from '../../../service/livro/livro.service';
-import { Livro } from '../../../models/livro.model';
+import { Livro, registerBooks } from '../../../models/livro.model';
 
 @Component({
   selector: 'app-livro-cadastro',
@@ -16,12 +16,12 @@ import { Livro } from '../../../models/livro.model';
   styleUrl: './livro-cadastro.component.scss'
 })
 export class LivroCadastroComponent {
-  titulo: string = "";
-  autor: string = "";
+  title: string = "";
+  author: string = "";
   isbn: string = "";
-  genero: string = 'acao';
-  anoPublicacao: number | undefined;
-  quantExemplares: number | undefined;
+  genre: string = 'acao';
+  publicationYear: number | undefined;
+  copiesQuantity: number | undefined;
 
   livroCadastrado: boolean = false;
 
@@ -29,29 +29,28 @@ export class LivroCadastroComponent {
   router = inject(Router);
 
   onGeneroChange() {
-    console.log("Gênero selecionado:", this.genero);
+    console.log("Gênero selecionado:", this.genre);
   }
 
   cadastrar() {
-    if (this.titulo === '' || this.autor === '' || this.isbn === '' || this.anoPublicacao === undefined || this.quantExemplares === undefined) {
+    if (this.title === '' || this.author === '' || this.isbn === '' || this.publicationYear === undefined || this.copiesQuantity === undefined) {
       console.log("Preencha os dados do Livro!");
       alert("Você não preencheu todos os dados!");
       return;
     }
 
-    const novoLivro: Livro = {
-      idLivro: 0,
-      titulo: this.titulo,
-      autor: this.autor,
-      genero: this.genero,
+    const novoLivro: registerBooks = {
+      title: this.title,
+      author: this.author,
+      genre: this.genre,
       isbn: this.isbn,
-      anoPublicacao: this.anoPublicacao,
-      quantExemplares: this.quantExemplares
+      publicationYear: this.publicationYear,
+      copiesQuantity: this.copiesQuantity
     };
 
     this.livroService.criarLivro(novoLivro).subscribe({
       next: (response) => {
-        console.log(`Livro ${this.titulo} cadastrado com sucesso!`, response);
+        console.log(`Livro ${this.title} cadastrado com sucesso!`, response);
         this.livroCadastrado = true;
 
         setTimeout(() => {

@@ -1,19 +1,28 @@
 export class Livro {
-    idLivro: number;
-    titulo: string;
-    autor: string;
-    genero: string;
+    bookId: number;
+    title: string;
+    author: string;
+    genre: string;
     isbn: string;
-    anoPublicacao: number;
-    quantExemplares: number;
+    publicationYear: number;
+    copiesQuantity: number;
 
-    constructor(idLivro: number, titulo: string, autor: string, genero: string, isbn: string, anoPublicacao: number, quantExemplares: number) {
-        this.idLivro = idLivro;
-        this.titulo = titulo;
-        this.autor = autor;
-        this.genero = genero;
+    constructor(bookId: number, title: string, author: string, genre: string, isbn: string, publicationYear: number, copiesQuantity: number) {
+        this.bookId = bookId;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
         this.isbn = isbn;
-        this.anoPublicacao = anoPublicacao;
-        this.quantExemplares = quantExemplares;
+        this.publicationYear = publicationYear;
+        this.copiesQuantity = copiesQuantity;
     }
+}
+
+export type registerBooks = {
+    title: string;
+    author: string;
+    genre: string;
+    isbn: string;
+    publicationYear: number;
+    copiesQuantity: number;
 }

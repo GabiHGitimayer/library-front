@@ -22,19 +22,19 @@
                 </thead>
                 <tbody>
                     <tr class="text-style-list" *ngFor="let livro of livros; trackBy: trackById">
-                        <td>{{ livro.idLivro }}</td>
-                        <td>{{ livro.titulo }}</td>
-                        <td>{{ livro.autor }}</td>
-                        <td>{{ livro.genero }}</td>
+                        <td>{{ livro.bookId }}</td>
+                        <td>{{ livro.title }}</td>
+                        <td>{{ livro.author }}</td>
+                        <td>{{ livro.genre }}</td>
                         <td>{{ livro.isbn }}</td>
-                        <td>{{ livro.anoPublicacao }}</td>
-                        <td>{{ livro.quantExemplares }}</td>
+                        <td>{{ livro.publicationYear }}</td>
+                        <td>{{ livro.copiesQuantity }}</td>
                         <td>
-                            <button class="dropdown-toggle" (click)="toggleDropdown(livro.idLivro)"></button>
+                            <button class="dropdown-toggle" (click)="toggleDropdown(livro.bookId)"></button>
                             
-                            <div class="dropdown-menu" *ngIf="dropdownOpenId === livro.idLivro">
-                                <button class="dropdown-item" [routerLink]="['/biblioteca/livros/editar', livro.idLivro]">Editar</button>
-                                <button class="dropdown-item" (click)="excluirLivro(livro.idLivro)">Excluir</button>
+                            <div class="dropdown-menu" *ngIf="dropdownOpenId === livro.bookId">
+                                <button class="dropdown-item" [routerLink]="['/biblioteca/livros/editar', livro.bookId]">Editar</button>
+                                <button class="dropdown-item" (click)="excluirLivro(livro.bookId)">Excluir</button>
                             </div>
                         </td>
                     </tr>

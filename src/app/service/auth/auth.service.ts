@@ -3,6 +3,7 @@ import { environment } from "../../../enviroment/enviroment";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Login, LoginResponseDTO, Register } from "../../models/auth.model";
+import { ApiRequest } from '../apiRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Login, LoginResponseDTO, Register } from "../../models/auth.model";
 export class AuthService {
   private apiUrl = `${environment.apiUrl}/auth`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private apiRequest: ApiRequest, private http: HttpClient) {}
 
   realizarAuth(login: Login): Observable<LoginResponseDTO> {
     const response = this.http.post<LoginResponseDTO>(`${this.apiUrl}/login`, login);
@@ -21,6 +22,10 @@ export class AuthService {
 
   
   registrarAuth(register: Register): Observable<Register> {
-    return this.http.post<Register>(`${this.apiUrl}/register`, register);
+    const config = {
+      method: 'POST', 
+      body: register
+    }    
+    return this.apiRequest.apiRequest<Register>(`${this.apiUrl}/register`, config);
   }
 }
