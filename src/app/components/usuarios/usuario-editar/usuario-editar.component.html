@@ -9,13 +9,19 @@
     <form class="book-form">
         <div class="form-group">
           <label mdbLabel class="form-label" for="nome">Nome do usuário</label>
-          <input mdbInput type="text" id="nomeUsuario" class="form-control" [(ngModel)]="nomeUsuario" name="nomeUsuario" />
+          <input mdbInput type="text" id="userName" class="form-control" [(ngModel)]="userName" name="userName" />
           
         </div>
 
         <div class="form-group">
           <label mdbLabel class="form-label" for="cpf">CPF do usuário</label>
             <input mdbInput type="text" id="cpf" class="form-control" [(ngModel)]="cpf" name="cpf" />
+            
+          </div>
+
+          <div class="form-group">
+            <label mdbLabel class="form-label" for="e-mail">E-mail</label>
+            <input mdbInput type="text" id="email" class="form-control" [(ngModel)]="email" name="email" />
             
           </div>
       

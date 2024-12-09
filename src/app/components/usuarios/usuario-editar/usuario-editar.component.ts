@@ -20,18 +20,19 @@ export class UsuarioEditarComponent implements OnInit {
   route = inject(ActivatedRoute);
 
   idUsuario!: number;
-  nomeUsuario:string = "";
+  userName:string = "";
   cpf:string = "";
   senha:string = "";
+  email:string = "";
   userType!: userType;
   usuarioEditado: boolean = false;
 
   ngOnInit() {
     this.idUsuario = +this.route.snapshot.paramMap.get('id')!;
 
-    this.usuarioService.getUsuarioById(this.idUsuario).subscribe(
+    this.usuarioService.listarUsuariosPeloID(this.idUsuario).subscribe(
       (usuario) => {
-        this.nomeUsuario = usuario.userName;
+        this.userName = usuario.userName;
         this.cpf = usuario.userCpf;
         this.senha = usuario.userPassword;
         this.userType = usuario.userType;
@@ -45,7 +46,7 @@ export class UsuarioEditarComponent implements OnInit {
   editar() {
     const usuarioAtualizado: User = {
       userId: this.idUsuario,
-      userName: this.nomeUsuario,
+      userName: this.userName,
       userCpf: this.cpf,
       userPassword: this.senha,
       userType: this.userType
@@ -60,7 +61,7 @@ export class UsuarioEditarComponent implements OnInit {
       },
       (error) => {
         console.error("Erro ao atualizar o usuário:", error);
-        alert(`O usuário ${this.nomeUsuario} não pode ser editado, pois está vinculado a um empréstimo`);
+        alert(`O usuário ${this.userName} não pode ser editado, pois está vinculado a um empréstimo`);
       }
     );
   }

@@ -13,8 +13,7 @@ import { UsuarioService } from '../../src/app/service/usuario/usuario.service';
 import { LivroService } from '../../src/app/service/livro/livro.service';
 import { MultaService } from '../../src/app/service/multa/multa.service';
 import { HistoricoService } from '../../src/app/service/histórico/historico.service';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from '../app/interceptors/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -29,9 +28,6 @@ import { AuthInterceptor } from '../app/interceptors/auth.service';
     EmprestimoService,
     UsuarioService,
     LivroService,
-    HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true,
   ],
 })
 export class AppModule {}
