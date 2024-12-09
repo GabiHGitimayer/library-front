@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -14,6 +13,8 @@ import { UsuarioService } from '../../src/app/service/usuario/usuario.service';
 import { LivroService } from '../../src/app/service/livro/livro.service';
 import { MultaService } from '../../src/app/service/multa/multa.service';
 import { HistoricoService } from '../../src/app/service/histórico/historico.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../app/interceptors/auth.service';
 
 @NgModule({
   imports: [
@@ -27,7 +28,10 @@ import { HistoricoService } from '../../src/app/service/histórico/historico.ser
   providers: [
     EmprestimoService,
     UsuarioService,
-    LivroService
+    LivroService,
+    HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
   ],
 })
 export class AppModule {}
