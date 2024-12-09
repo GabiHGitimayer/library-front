@@ -26,6 +26,6 @@ export class AuthService {
       method: 'POST', 
       body: register
     }    
-    return this.apiRequest.apiRequest<Register>(`${this.apiUrl}/register`, config);
+    return this.apiRequest.apiRequest<Register>(`${this.apiUrl}/register`, config)
   }
 }
