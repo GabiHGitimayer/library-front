@@ -23,14 +23,14 @@
                 <tbody>
                     @for (emprestimo of emprestimos; track $index) {
                     <tr text-style-list>
-                        <td>{{ emprestimo.idEmprestimo }}</td>
-                        <td>{{ emprestimo.usuario.nomeUsuario}}</td>
-                        <td>{{ emprestimo.livro.titulo }}</td>
-                        <td>{{ emprestimo.dataEmprestimo }}</td>
-                        <td>{{ emprestimo.dataDevolucaoEfetiva }}</td>
-                        <td>{{ emprestimo.statusEmprestimo }}</td>
+                        <td>{{ emprestimo.loanId }}</td>
+                        <td>{{ emprestimo.userId.username}}</td>
+                        <td>{{ emprestimo.bookId.title }}</td>
+                        <td>{{ emprestimo.loanDate }}</td>
+                        <td>{{ emprestimo.efectiveReturnDate }}</td>
+                        <td>{{ emprestimo.loanStatus }}</td>
                         <td>
-                            <button (click)="devolverLivro(emprestimo.idEmprestimo)">Devolver</button>
+                            <button (click)="devolverLivro(emprestimo.loanId)">Devolver</button>
                             <div *ngIf="multa">
                                 <p>{{ mensagemMulta }}</p>
                             </div>

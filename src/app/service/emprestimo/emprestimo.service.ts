@@ -39,7 +39,6 @@ export class EmprestimoService {
     return this.apiRequest.apiRequest<Emprestimo[]>(`${this.apiUrl}`, config)
   }
 
-  //nós temos esse endpoint aqui? não temos uma service de devolver empréstimo pelo que eu me lembre Tem sim
   devolverEmprestimo(id: number): Observable<Emprestimo> {
     const config = {
       method: "POST"

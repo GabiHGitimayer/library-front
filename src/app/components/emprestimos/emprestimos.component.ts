@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { EmprestimoService } from '../../service/emprestimo/emprestimo.service';
 import { MultaService } from '../../service/multa/multa.service';
 import { NavbarComponent } from "../navbar/navbar.component";
-import { Multa } from '../../models/multa.model';
+import { Fine } from '../../models/multa.model';
 import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { Emprestimo } from '../../models/emprestimo.model';
 
 @Component({
   selector: 'app-emprestimos',
@@ -14,8 +15,8 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./emprestimos.component.scss']
 })
 export class EmprestimosComponent implements OnInit {
-  emprestimos: any[] = [];
-  multa: Multa | null = null;
+  emprestimos: Emprestimo[] = [];
+  multa: Fine | null = null;
   mensagemMulta: string = '';
 
   constructor(
@@ -34,25 +35,31 @@ export class EmprestimosComponent implements OnInit {
   }
 
   devolverLivro(idEmprestimo: number): void {
-    this.emprestimoService.devolverEmprestimo(idEmprestimo).subscribe(() => {
-      this.calcularMulta(idEmprestimo);
+    this.emprestimoService.devolverEmprestimo(idEmprestimo).subscribe({
+      next: () => {
+        this.calcularMulta(idEmprestimo);
+      },
+      error: (error) => {
+        console.error('Erro ao devolver o livro:', error);
+        this.mensagemMulta = 'Erro ao devolver o livro.';
+      },
     });
   }
 
   calcularMulta(idEmprestimo: number): void {
-    this.multaService.calcularMulta(idEmprestimo).subscribe(
-      (multa: Multa) => {
-        if (multa.valorMulta > 0) {
-          this.multa = new Multa(multa.valorMulta);
-          this.mensagemMulta = "A multa é de R$ ${multa.valorMulta.toFixed(2)} devido ao atraso.";
+    this.multaService.calcularMulta(idEmprestimo).subscribe({
+      next: (multa: Fine) => {
+        if (multa.fineValue > 0) {
+          this.multa = multa;
+          this.mensagemMulta = `A multa é de R$ ${multa.fineValue.toFixed(2)} devido ao atraso.`;
         } else {
           this.mensagemMulta = 'Empréstimo devolvido sem multas.';
         }
       },
-      (error) => {
+      error: (error) => {
         console.error('Erro ao calcular a multa:', error);
         this.mensagemMulta = 'Erro ao calcular a multa.';
-      }
-    );
+      },
+    });
   }
 }

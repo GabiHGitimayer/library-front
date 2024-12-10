@@ -2,22 +2,22 @@ import { Livro } from "./livro.model";
 import { User } from "./user.model";
 
 export class Emprestimo {
-    idEmprestimo: number;
-    usuario: User;
-    livro: Livro;
-    dataEmprestimo: Date;
-    dataDevolucao: Date;
-    dataDevolucaoEfetiva: Date;
-    statusEmprestimo: string;
+    loanId: number;
+    userId: User;
+    bookId: Livro;
+    loanDate: Date;
+    returnDate: Date;
+    efectiveReturnDate: Date;
+    loanStatus: string;
 
-    constructor(idEmprestimo: number, usuario: User, livro: Livro, dataEmprestimo: Date, dataDevolucao: Date, dataDevolucaoEfetiva: Date, statusEmprestimo: string) {
-        this.idEmprestimo = idEmprestimo;
-        this.usuario = usuario;
-        this.livro = livro;
-        this.dataEmprestimo = dataEmprestimo;
-        this.dataDevolucao = dataDevolucao;
-        this.dataDevolucaoEfetiva = dataDevolucaoEfetiva;
-        this.statusEmprestimo = statusEmprestimo;
+    constructor(loanId: number, userId: User, bookId: Livro, loanDate: Date, returnDate: Date, efectiveReturnDate: Date, loanStatus: string) {
+        this.loanId = loanId;
+        this.userId = userId;
+        this.bookId = bookId;
+        this.loanDate = loanDate;
+        this.returnDate = returnDate;
+        this.efectiveReturnDate = efectiveReturnDate;
+        this.loanStatus = loanStatus;
     }
 }
 

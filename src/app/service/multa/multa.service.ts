@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Multa } from '../../models/multa.model';
+import { Fine } from '../../models/multa.model';
 import { environment } from '../../../enviroment/enviroment';
 
 @Injectable({
@@ -12,8 +12,8 @@ export class MultaService {
 
   constructor(private http: HttpClient) {}
 
-  calcularMulta(idEmprestimo: number): Observable<Multa> {
-    return this.http.post<Multa>(`${this.apiUrl}/calculate/${idEmprestimo}`, {});
+  calcularMulta(idEmprestimo: number): Observable<Fine> {
+    return this.http.post<Fine>(`${this.apiUrl}/calculate/${idEmprestimo}`, {});
   }
 
 }
