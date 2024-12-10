@@ -23,9 +23,10 @@ export class UsuarioCadastroComponent {
   email: string = "";
   type: userType = userType.USUARIO;
   usuarioCadastrado: boolean = false;
+  userType = userType;
 
   router = inject(Router);
-  private authService = inject(AuthService);
+  authService = inject(AuthService);
 
   cadastrar() {
     if (this.name === '' || this.cpf === '' || this.password === '') {

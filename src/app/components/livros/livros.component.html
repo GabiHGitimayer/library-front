@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="background central-content">
     <div class="back-cover">
-        <section>
+        <section *ngIf="authService.hasAdminOrFuncionarioPermission()">
             <div>
                 <button class="button-cad-livro" [routerLink]="['/biblioteca/livros/cadastro']">Cadastrar</button>
             </div>
@@ -29,7 +29,7 @@
                         <td>{{ livro.isbn }}</td>
                         <td>{{ livro.publicationYear }}</td>
                         <td>{{ livro.copiesQuantity }}</td>
-                        <td>
+                        <td *ngIf="authService.hasAdminOrFuncionarioPermission()">
                             <button class="dropdown-toggle" (click)="toggleDropdown(livro.bookId)"></button>
                             
                             <div class="dropdown-menu" *ngIf="dropdownOpenId === livro.bookId">

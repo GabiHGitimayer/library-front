@@ -37,7 +37,7 @@
               id="usuario" checked />
             <label class="form-check-label" for="usuario"> Usuário </label>
           </div>
-          <div>
+          <div *ngIf="authService.hasPermission(userType.ADMIN)">
             <input class="form-check-input" type="radio" name="type" [(ngModel)]="type" value="ADM"
               id="admin" />
             <label class="form-check-label" for="ADM"> Administrador </label>

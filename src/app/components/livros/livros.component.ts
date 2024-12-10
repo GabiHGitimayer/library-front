@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { Livro } from '../../models/livro.model';
 import { LivroService } from '../../service/livro/livro.service';
 import { NgFor, CommonModule } from '@angular/common';
+import { AuthService } from '../../service/auth/auth.service';
 
 @Component({
   selector: 'app-livros',
@@ -16,6 +17,8 @@ export class LivrosComponent {
   livros: Livro[] = [];
   livroService = inject(LivroService);
   dropdownOpenId: number | null = null;
+
+  authService = inject(AuthService);
 
   ngOnInit(): void {
     this.findAll();

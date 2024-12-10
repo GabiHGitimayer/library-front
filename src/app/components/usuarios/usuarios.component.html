@@ -24,7 +24,7 @@
                         <td>{{ usuario.userCpf }}</td>
                         <td>{{ usuario.userType }}</td>
 
-                        <td>
+                        <td *ngIf="authService.hasPermission(userType.ADMIN)">
                             <button class="dropdown-toggle" (click)="toggleDropdown(usuario.userId)"></button>
 
                             <div class="dropdown-menu" *ngIf="dropdownOpenId === usuario.userId">

@@ -9,6 +9,8 @@ import { EmprestimoCadastroComponent } from './components/emprestimos/emprestimo
 import { EmprestimosComponent } from './components/emprestimos/emprestimos.component';
 import { LivroEditarComponent } from './components/livros/livro-editar/livro-editar.component';
 import { UsuarioEditarComponent } from './components/usuarios/usuario-editar/usuario-editar.component';
+import { adminFuncionarioGuard } from './guard/adminFuncionario.guard';
+import { adminGuard } from './guard/admin.guard';
 
 
 export const routes: Routes = [
@@ -16,28 +18,12 @@ export const routes: Routes = [
     { path: "login", component: LoginComponent },
 
     { path: "biblioteca", component: BibliotecaComponent },
-    { path: "biblioteca/usuarios", component: UsuariosComponent },
+    { path: "biblioteca/usuarios", component: UsuariosComponent, canActivate: [adminFuncionarioGuard] },
     { path: "biblioteca/livros", component: LivrosComponent },
     { path: "biblioteca/emprestimos", component: EmprestimosComponent},
-    { path: "biblioteca/usuarios/cadastro", component: UsuarioCadastroComponent },
-    { path: "biblioteca/livros/cadastro", component: LivroCadastroComponent },
-    { path: "biblioteca/emprestimos/cadastro", component: EmprestimoCadastroComponent },
-    { path: "biblioteca/usuarios/editar/:id", component: UsuarioEditarComponent },
-    { path: "biblioteca/livros/editar/:id", component: LivroEditarComponent },
-
-
-    // { path: "", component: LoginComponent },
-    // { path: "login", component: LoginComponent },
-    // { 
-    //     path: "biblioteca", 
-    //     component: BibliotecaComponent,
-    //     children: [
-    //         { path: "usuarios", component: UsuariosComponent },
-    //         { path: "livros", component: LivrosComponent },
-    //         { path: "emprestimos", component: EmprestimosComponent },
-    //         { path: "usuarios/cadastro", component: UsuarioCadastroComponent },
-    //         { path: "livros/cadastro", component: LivroCadastroComponent },
-    //         { path: "emprestimos/cadastro", component: EmprestimoCadastroComponent }
-    //     ]
-    // }
+    { path: "biblioteca/usuarios/cadastro", component: UsuarioCadastroComponent, canActivate: [adminFuncionarioGuard] },
+    { path: "biblioteca/livros/cadastro", component: LivroCadastroComponent, canActivate: [adminFuncionarioGuard] },
+    { path: "biblioteca/emprestimos/cadastro", component: EmprestimoCadastroComponent, canActivate: [adminFuncionarioGuard] },
+    { path: "biblioteca/usuarios/editar/:id", component: UsuarioEditarComponent, canActivate: [adminGuard] },
+    { path: "biblioteca/livros/editar/:id", component: LivroEditarComponent, canActivate: [adminFuncionarioGuard] },
 ];

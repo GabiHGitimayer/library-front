@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { EmprestimoService } from '../../service/emprestimo/emprestimo.service';
 import { MultaService } from '../../service/multa/multa.service';
 import { NavbarComponent } from "../navbar/navbar.component";
@@ -6,6 +6,7 @@ import { Fine } from '../../models/multa.model';
 import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { Emprestimo } from '../../models/emprestimo.model';
+import { AuthService } from '../../service/auth/auth.service';
 
 @Component({
   selector: 'app-emprestimos',
@@ -18,6 +19,8 @@ export class EmprestimosComponent implements OnInit {
   emprestimos: Emprestimo[] = [];
   multa: Fine | null = null;
   mensagemMulta: string = '';
+
+  authService = inject(AuthService);
 
   constructor(
     private emprestimoService: EmprestimoService,

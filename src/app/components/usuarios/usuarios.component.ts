@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { UsuarioService } from '../../service/usuario/usuario.service';
-import { User } from '../../models/user.model';
+import { User, userType } from '../../models/user.model';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { RouterLink } from '@angular/router';
 import { NgFor, CommonModule } from '@angular/common';
+import { AuthService } from '../../service/auth/auth.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -16,6 +17,8 @@ export class UsuariosComponent {
   usuarios: User[] = [];
   dropdownOpenId: number | null = null;
   usuarioService = inject(UsuarioService);
+  authService = inject(AuthService);
+  userType = userType;
 
   constructor() {}
 
