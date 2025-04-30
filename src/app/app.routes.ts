@@ -16,7 +16,7 @@ import { adminGuard } from './guard/admin.guard';
 export const routes: Routes = [
     { path: "", component: LoginComponent },
     { path: "login", component: LoginComponent },
-
+    { path: "auth/login", component: LoginComponent },
     { path: "biblioteca", component: BibliotecaComponent },
     { path: "biblioteca/usuarios", component: UsuariosComponent, canActivate: [adminFuncionarioGuard] },
     { path: "biblioteca/livros", component: LivrosComponent },
